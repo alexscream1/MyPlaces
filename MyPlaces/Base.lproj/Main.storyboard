@@ -16,22 +16,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="4PM-cq-yYD" style="IBUITableViewCellStyleDefault" id="J9q-gD-8XI">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="J9q-gD-8XI" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J9q-gD-8XI" id="yo1-cu-9VY">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4PM-cq-yYD">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zi8-c0-SpJ">
+                                            <rect key="frame" x="15" y="10" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="65" id="64q-Z3-uc5"/>
+                                                <constraint firstAttribute="width" constant="65" id="gd3-iX-IvB"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Li3-ym-TdM">
+                                            <rect key="frame" x="95" y="9" width="303" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="N01-10-gq2"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ked-pq-BbY">
+                                            <rect key="frame" x="95" y="35" width="283" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="3d8-l3-vmQ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZa-i4-EAa">
+                                            <rect key="frame" x="95" y="54" width="303" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="x4F-ow-DJr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="MZa-i4-EAa" secondAttribute="trailing" constant="16" id="0Wx-CC-Zn6"/>
+                                        <constraint firstItem="zi8-c0-SpJ" firstAttribute="leading" secondItem="yo1-cu-9VY" secondAttribute="leading" constant="15" id="3MR-Qq-ckb"/>
+                                        <constraint firstItem="MZa-i4-EAa" firstAttribute="top" secondItem="Ked-pq-BbY" secondAttribute="bottom" constant="1" id="BbX-Tg-iod"/>
+                                        <constraint firstItem="zi8-c0-SpJ" firstAttribute="centerY" secondItem="yo1-cu-9VY" secondAttribute="centerY" id="IfC-Mn-4hQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="MZa-i4-EAa" secondAttribute="bottom" constant="10" id="Uc7-sN-VHb"/>
+                                        <constraint firstItem="Ked-pq-BbY" firstAttribute="leading" secondItem="zi8-c0-SpJ" secondAttribute="trailing" constant="15" id="YHR-wh-Pqe"/>
+                                        <constraint firstItem="MZa-i4-EAa" firstAttribute="leading" secondItem="zi8-c0-SpJ" secondAttribute="trailing" constant="15" id="jxe-eV-8aF"/>
+                                        <constraint firstItem="Ked-pq-BbY" firstAttribute="top" secondItem="Li3-ym-TdM" secondAttribute="bottom" constant="5" id="lMY-Bp-VD1"/>
+                                        <constraint firstAttribute="trailing" secondItem="Li3-ym-TdM" secondAttribute="trailing" constant="16" id="lY3-Vh-HNw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ked-pq-BbY" secondAttribute="trailing" constant="16" id="qcJ-6T-PKp"/>
+                                        <constraint firstItem="Li3-ym-TdM" firstAttribute="leading" secondItem="zi8-c0-SpJ" secondAttribute="trailing" constant="15" id="r34-Dd-2bh"/>
+                                        <constraint firstItem="Li3-ym-TdM" firstAttribute="top" secondItem="yo1-cu-9VY" secondAttribute="top" constant="9" id="zqe-d5-ErX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityNameLabel" destination="MZa-i4-EAa" id="3uj-zx-yud"/>
+                                    <outlet property="countryNameLabel" destination="MZa-i4-EAa" id="UuK-ta-f8I"/>
+                                    <outlet property="placeImageView" destination="zi8-c0-SpJ" id="aBt-iD-wdw"/>
+                                    <outlet property="placeNameLabel" destination="Li3-ym-TdM" id="qOp-nm-dNa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -43,7 +90,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n54-oL-DmV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="-67"/>
+            <point key="canvasLocation" x="173.91304347826087" y="-67.633928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YIE-ho-9WQ">
