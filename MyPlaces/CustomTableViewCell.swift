@@ -10,11 +10,8 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var placeImageView: UIImageView!
-    
     @IBOutlet weak var placeNameLabel: UILabel!
-    
     @IBOutlet weak var countryNameLabel: UILabel!
-    
     @IBOutlet weak var cityNameLabel: UILabel!
     
 }

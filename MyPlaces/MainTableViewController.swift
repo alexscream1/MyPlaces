@@ -9,8 +9,13 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    
-    var placesNames = ["Kyiv Maidan", "Bali", "Eiffel Tower", "Burj Khalifa", "Stanislav"]
+    var places = [
+        PlaceModel(name: "Maidan", country: "Ukraine", city: "Kyiv", image: nil, placeImage: "Maidan"),
+        PlaceModel(name: "Bali", country: "Indonesia", city: "Bali", image: nil, placeImage: "Bali"),
+        PlaceModel(name: "Eiffel Tower", country: "France", city: "Paris", image: nil, placeImage: "Eiffel Tower"),
+        PlaceModel(name: "Burj Khalifa", country: "UAE", city: "Dubai", image: nil, placeImage: "Burj Khalifa"),
+        PlaceModel(name: "Stanislav", country: "Ukraine", city: "Kherson", image: nil, placeImage: "Stanislav")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,28 +32,31 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return placesNames.count
+        return places.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-
-        cell.placeNameLabel.text = placesNames[indexPath.row]
-        cell.placeImageView.image = UIImage(named: placesNames[indexPath.row])
+        
+        let place = places[indexPath.row]
+        
+        cell.placeNameLabel.text = place.name
+        cell.countryNameLabel.text = place.country
+        cell.cityNameLabel.text = place.city
+        
+        if place.image == nil {
+            cell.placeImageView.image = UIImage(named: place.placeImage!)
+        } else {
+            cell.placeImageView.image = place.image
+        }
+        
         cell.placeImageView.layer.cornerRadius = cell.placeImageView.frame.size.width / 2
         cell.placeImageView.clipsToBounds = true
-
- 
+        
+        
         return cell
     }
-    
-    // MARK: - Table view delegate
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
-    }
-   
 
     /*
     // MARK: - Navigation
@@ -59,5 +67,15 @@ class MainTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Cancel action for NewPlaceVC
+    
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        
+        guard let newPlaceVC = segue.source as? NewPlaceTableViewController else { return }
+        newPlaceVC.saveNewPlace()
+        places.append(newPlaceVC.newPlace!)
+        tableView.reloadData()
+    }
 
 }
