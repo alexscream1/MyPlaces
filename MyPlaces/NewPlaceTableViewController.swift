@@ -9,7 +9,7 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
 
-    var newPlace: PlaceModel?
+    var currentPlace : PlaceModel?
     var imageIsChanged = false
     
     @IBOutlet weak var saveButtonItem: UIBarButtonItem!
@@ -21,14 +21,41 @@ class NewPlaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         saveButtonItem.isEnabled = false
-        
         placeTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        setupEditScreen()
+    }
+    
+    
+    private func setupEditScreen() {
+        
+        if currentPlace != nil {
+            setupNavBar()
+            imageIsChanged = true
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else {return}
+            
+            addPlaceImageView.image = image
+            addPlaceImageView.contentMode = .scaleAspectFill
+            placeTextField.text = currentPlace?.name
+            countryTextField.text = currentPlace?.country
+            cityTextField.text = currentPlace?.city
+        }
+        
+    }
+    
+    private func setupNavBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
+        navigationItem.leftBarButtonItem = .none
+        title = currentPlace?.name
+        saveButtonItem.isEnabled = true
+        
     }
 
     // MARK: - Function to save new place
-    func saveNewPlace() {
+    func savePlace() {
         
         var image: UIImage?
         
@@ -38,8 +65,20 @@ class NewPlaceTableViewController: UITableViewController {
             image = #imageLiteral(resourceName: "travel")
         }
         
-        newPlace = PlaceModel(name: placeTextField.text!, country: countryTextField.text, city: cityTextField.text, image: image, placeImage: nil)
+        let imageData = image?.pngData()
         
+        let newPlace = PlaceModel(name: placeTextField.text!, country: countryTextField.text, city: cityTextField.text, imageData: imageData)
+        
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.country = newPlace.country
+                currentPlace?.city = newPlace.city
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            StorageManager.saveObject(newPlace)
+        }
     }
     
     // MARK: - Cancel Button Action

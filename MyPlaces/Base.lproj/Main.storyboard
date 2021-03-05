@@ -71,6 +71,7 @@
                                     <outlet property="countryNameLabel" destination="Ked-pq-BbY" id="XJe-RA-CdF"/>
                                     <outlet property="placeImageView" destination="zi8-c0-SpJ" id="aBt-iD-wdw"/>
                                     <outlet property="placeNameLabel" destination="Li3-ym-TdM" id="qOp-nm-dNa"/>
+                                    <segue destination="a6a-eq-JqM" kind="show" identifier="editPlace" id="W16-d9-IfZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -79,7 +80,7 @@
                             <outlet property="delegate" destination="vKW-Kh-JiL" id="Glj-Sw-nZb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Places" id="c8F-QV-Cqq">
+                    <navigationItem key="navigationItem" title="Places" largeTitleDisplayMode="never" id="c8F-QV-Cqq">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nOn-U7-tGZ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -92,7 +93,7 @@
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="-67.633928571428569"/>
         </scene>
-        <!--New Place Table View Controller-->
+        <!--New Place-->
         <scene sceneID="Jlf-EF-tdX">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="a6a-eq-JqM" customClass="NewPlaceTableViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
@@ -236,7 +237,7 @@
                             <outlet property="delegate" destination="a6a-eq-JqM" id="ZG0-32-b9h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="i0H-wr-GU5">
+                    <navigationItem key="navigationItem" title="New Place" largeTitleDisplayMode="always" id="i0H-wr-GU5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Exz-8Q-GKR">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -261,14 +262,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoF-fP-xtC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="une-yg-BR4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1579.7101449275362" y="-59.598214285714285"/>
+            <point key="canvasLocation" x="893" y="-62"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YIE-ho-9WQ">
             <objects>
                 <navigationController id="ess-yo-dpI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sui-um-dzc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Sui-um-dzc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="25"/>
@@ -287,9 +288,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ouG-f2-YVY" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="YGF-To-31Z"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oWD-KT-N5r">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="25"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -298,9 +303,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Sh-Rx-jM3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="-59"/>
+            <point key="canvasLocation" x="893" y="-738"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2l9-dw-TUu"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="225" height="225"/>
         <systemColor name="systemBackgroundColor">
