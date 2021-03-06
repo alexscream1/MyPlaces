@@ -17,6 +17,7 @@ class NewPlaceTableViewController: UITableViewController {
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     
     override func viewDidLoad() {
@@ -39,6 +40,11 @@ class NewPlaceTableViewController: UITableViewController {
             placeTextField.text = currentPlace?.name
             countryTextField.text = currentPlace?.country
             cityTextField.text = currentPlace?.city
+            
+            if let rating = currentPlace?.rating {
+                ratingControl.rating = Int(rating)
+            }
+            
         }
         
     }
@@ -67,7 +73,7 @@ class NewPlaceTableViewController: UITableViewController {
         
         let imageData = image?.pngData()
         
-        let newPlace = PlaceModel(name: placeTextField.text!, country: countryTextField.text, city: cityTextField.text, imageData: imageData)
+        let newPlace = PlaceModel(name: placeTextField.text!, country: countryTextField.text, city: cityTextField.text, imageData: imageData, rating: Double(ratingControl.rating))
         
         if currentPlace != nil {
             try! realm.write {
@@ -75,6 +81,7 @@ class NewPlaceTableViewController: UITableViewController {
                 currentPlace?.country = newPlace.country
                 currentPlace?.city = newPlace.city
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)

@@ -103,6 +103,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table view delegate
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let place = places[indexPath.row]
@@ -145,6 +149,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.countryNameLabel.text = place.country
         cell.cityNameLabel.text = place.city
         cell.placeImageView.image = UIImage(data: place.imageData!)
+        cell.starsImageView.image = UIImage(named: String(Int(place.rating)))
       
         
         cell.placeImageView.layer.cornerRadius = cell.placeImageView.frame.size.width / 2
