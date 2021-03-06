@@ -12,7 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var countryNameLabel: UILabel!
-    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var starsImageView: UIImageView!
     
 }

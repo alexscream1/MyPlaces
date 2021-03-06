@@ -147,7 +147,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.placeNameLabel.text = place.name
         cell.countryNameLabel.text = place.country
-        cell.cityNameLabel.text = place.city
+        cell.locationNameLabel.text = place.location
         cell.placeImageView.image = UIImage(data: place.imageData!)
         cell.starsImageView.image = UIImage(named: String(Int(place.rating)))
       
@@ -170,7 +170,7 @@ extension MainViewController: UISearchResultsUpdating {
     private func filterResultForSearch(_ searchText: String) {
         
         // Create filter to search by names/country/city
-        filteredPlaces = places.filter("name CONTAINS[c] %@ OR country CONTAINS[c] %@ OR city CONTAINS[c] %@", searchText, searchText, searchText)
+        filteredPlaces = places.filter("name CONTAINS[c] %@ OR country CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText, searchText)
         
         tableView.reloadData()
     }

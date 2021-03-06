@@ -12,7 +12,7 @@ class PlaceModel: Object {
     
     @objc dynamic var name = ""
     @objc dynamic var country: String?
-    @objc dynamic var city: String?
+    @objc dynamic var location: String?
     @objc dynamic var imageData: Data?
     @objc dynamic var date = Date()
     @objc dynamic var rating: Double = 0
@@ -23,7 +23,7 @@ class PlaceModel: Object {
         self.init()
         self.name = name
         self.country = country
-        self.city = city
+        self.location = city
         self.imageData = imageData
         self.rating = rating
     }

@@ -16,7 +16,7 @@ class NewPlaceTableViewController: UITableViewController {
     @IBOutlet weak var addPlaceImageView: UIImageView!
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var ratingControl: RatingControl!
     
     
@@ -39,7 +39,7 @@ class NewPlaceTableViewController: UITableViewController {
             addPlaceImageView.contentMode = .scaleAspectFill
             placeTextField.text = currentPlace?.name
             countryTextField.text = currentPlace?.country
-            cityTextField.text = currentPlace?.city
+            locationTextField.text = currentPlace?.location
             
             if let rating = currentPlace?.rating {
                 ratingControl.rating = Int(rating)
@@ -60,26 +60,20 @@ class NewPlaceTableViewController: UITableViewController {
         
     }
 
-    // MARK: - Function to save new place
+    // MARK: - Save place function
     func savePlace() {
         
-        var image: UIImage?
-        
-        if imageIsChanged {
-            image = addPlaceImageView.image
-        } else {
-            image = #imageLiteral(resourceName: "travel")
-        }
+        let image = imageIsChanged ? addPlaceImageView.image : #imageLiteral(resourceName: "travel")
         
         let imageData = image?.pngData()
         
-        let newPlace = PlaceModel(name: placeTextField.text!, country: countryTextField.text, city: cityTextField.text, imageData: imageData, rating: Double(ratingControl.rating))
+        let newPlace = PlaceModel(name: placeTextField.text!, country: countryTextField.text, city: locationTextField.text, imageData: imageData, rating: Double(ratingControl.rating))
         
         if currentPlace != nil {
             try! realm.write {
                 currentPlace?.name = newPlace.name
                 currentPlace?.country = newPlace.country
-                currentPlace?.city = newPlace.city
+                currentPlace?.location = newPlace.location
                 currentPlace?.imageData = newPlace.imageData
                 currentPlace?.rating = newPlace.rating
             }
@@ -131,6 +125,26 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let identifier = segue.identifier, let mapVC = segue.destination as? MapViewController else {return}
+        
+        mapVC.receivedSegueIdentifier = identifier
+        
+        // Assign delegate for mapVCDelegate
+        mapVC.mapVCDelegate = self
+        
+        if identifier == "showPlace" {
+            mapVC.place.name = placeTextField.text!
+            mapVC.place.country = countryTextField.text!
+            mapVC.place.location = locationTextField.text!
+            mapVC.place.imageData = addPlaceImageView.image?.pngData()
+        }
+        
+        
+    }
+    
     
 }
 
@@ -179,4 +193,13 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+// MARK: - MapViewControllerDelegate
+
+extension NewPlaceTableViewController: MapViewControllerDelegate {
+    
+    func getAddress(_ address: String?) {
+        locationTextField.text = address
+    }
 }
