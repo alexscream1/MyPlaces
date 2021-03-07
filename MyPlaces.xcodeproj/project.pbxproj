@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661E163425F51E13005372B0 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661E163325F51E13005372B0 /* MapManager.swift */; };
 		66210F9525F001E300F4F3FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66210F9425F001E300F4F3FB /* AppDelegate.swift */; };
 		66210F9725F001E400F4F3FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66210F9625F001E400F4F3FB /* SceneDelegate.swift */; };
 		66210F9C25F001E400F4F3FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66210F9A25F001E400F4F3FB /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		053D42A7B2EE5FA74636383B /* Pods-MyPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlaces.release.xcconfig"; path = "Target Support Files/Pods-MyPlaces/Pods-MyPlaces.release.xcconfig"; sourceTree = "<group>"; };
+		661E163325F51E13005372B0 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		66210F9125F001E300F4F3FB /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66210F9425F001E300F4F3FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66210F9625F001E400F4F3FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				6670FA4825F0D7F2001F1FFB /* CustomTableViewCell.swift */,
 				667A6AEB25F293D1003DDC6E /* RatingControl.swift */,
 				6688277E25F38A39006766B4 /* MapViewController.swift */,
+				661E163325F51E13005372B0 /* MapManager.swift */,
 				66210F9A25F001E400F4F3FB /* Main.storyboard */,
 				6670FA5E25F12B30001F1FFB /* Assets.xcassets */,
 				66210FA925F0069600F4F3FB /* .gitignore */,
@@ -233,6 +236,7 @@
 				667A6AE625F20DF3003DDC6E /* StorageManager.swift in Sources */,
 				6688277F25F38A39006766B4 /* MapViewController.swift in Sources */,
 				667A6AEC25F293D1003DDC6E /* RatingControl.swift in Sources */,
+				661E163425F51E13005372B0 /* MapManager.swift in Sources */,
 				6670FA4C25F10F84001F1FFB /* PlaceModel.swift in Sources */,
 				6670FA4925F0D7F2001F1FFB /* CustomTableViewCell.swift in Sources */,
 				66210F9725F001E400F4F3FB /* SceneDelegate.swift in Sources */,

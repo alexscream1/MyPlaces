@@ -18,8 +18,6 @@ class MapViewController: UIViewController {
     var mapVCDelegate: MapViewControllerDelegate?
     var place = PlaceModel()
     let annotationIdentifier = "annotation"
-    let locationManager = CLLocationManager()
-    let regionInMeters: Double = 1000
     var receivedSegueIdentifier = ""
     var selectedAddress = ""
     
